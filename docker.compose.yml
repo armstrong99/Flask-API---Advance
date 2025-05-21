@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: unless-stopped
+    
+  frontend:
+    build:
+      context: ./ClientUI     # Points to the ClientUI folder
+      dockerfile: Dockerfile  # Uses its own Dockerfile
+    container_name: react-frontend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  service:
+    build: .
+    command: >
+      sh -c "PYTHONUNBUFFERED=1
+         (flask db init || true) &&
+         (flask db migrate || true ) &&
+         flask db upgrade &&
+         gunicorn --capture-output --log-level debug -c gunicorn_conf.py --bind 0.0.0.0:5001 wsgi:app"
+
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: wsgi.py
+      SECRET_KEY: sushswiwiw-29389r8jsjs-939bjbk-jhs7
+      JWT_SECRET_KEY: 129303-qq939q-skdjis-smkls-sij8s
+      DATABASE_URL: postgresql://myuser:mypassword@db:5432/mydb
+      MONNIFY_API_KEY: MK_TEST_H53DMLV461
+      MONNIFY_SECRET_KEY: MR125LU619NKMJXJXKV09DYHB1UEJXMW
+      MONNIFY_SANDBOX_URL: https://sandbox.monnify.com/api 
+      MONNIFY_CONTRACT_CODE: '0389460154'
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

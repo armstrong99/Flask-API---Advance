@@ -1,0 +1,49 @@
+[2025-05-20 16:51:37,340] INFO in __init__: Flask app started
+[2025-05-20 17:10:43,711] INFO in __init__: Flask app started
+[2025-05-20 17:13:56,878] ERROR in app: Exception on /api/auth/register [POST]
+Traceback (most recent call last):
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ndukwearmstrong/personal/cyberxBk/app/auth/routes.py", line 13, in register
+    data = RegisterSchema().load(request.json())
+TypeError: 'dict' object is not callable
+[2025-05-20 17:14:59,526] ERROR in app: Exception on /api/auth/register [POST]
+Traceback (most recent call last):
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ndukwearmstrong/personal/cyberxBk/app/auth/routes.py", line 13, in register
+    data = RegisterSchema().load(request.json)
+TypeError: 'dict' object is not callable
+[2025-05-20 17:15:04,731] INFO in __init__: Flask app started
+[2025-05-20 17:15:07,060] ERROR in app: Exception on /api/auth/register [POST]
+Traceback (most recent call last):
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ndukwearmstrong/personal/cyberxBk/app/auth/routes.py", line 18, in register
+    user.set_password(data['password'])
+  File "/Users/ndukwearmstrong/personal/cyberxBk/app/models/user.py", line 17, in set_password
+    def set_password(self, pw): self.password_hash = generate_password_hash(pw)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/werkzeug/security.py", line 108, in generate_password_hash
+    h, actual_method = _hash_internal(method, salt, password)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/werkzeug/security.py", line 43, in _hash_internal
+    hashlib.scrypt(
+AttributeError: module 'hashlib' has no attribute 'scrypt'
+[2025-05-20 17:16:47,112] INFO in __init__: Flask app started

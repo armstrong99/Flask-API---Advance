@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  touch-action: none;
+}
+
+.image {
+  position: fixed;
+  width: 25rem;
+  height: 95%;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  top: 2.5%;
+  bottom: 2.5%;
+  right: 1.5%;
+  border-radius: 20px;
+}
+
+.image.fade-in {
+  animation-name: fadeIn;
+}
+
+.image.fade-out {
+  animation-name: fadeOut;
+}
+
+/* scroll bar width removal */
+
+.idan::-webkit-scrollbar {
+  display: none;
+  /* Hides scrollbar in Chrome and Safari */
+}
+
+/* this is for react  calendar  */
+
+/* Align navigation items */
+/* Align navigation items */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Hide the year navigation arrows */
+.react-calendar__navigation__arrow {
+  @apply justify-between flex w-[31px];
+}
+
+/* double arrow */
+.react-calendar__navigation button:first-of-type {
+  order: 0;
+  display: none;
+}
+
+.react-calendar__navigation button:last-of-type {
+  order: 2;
+  display: none;
+}
+
+/* end of double arrow */
+.react-calendar__navigation__label {
+  order: -1;
+  /* Keep label centered */
+
+  @apply flex justify-between leading-[18.23px] text-[14px] font-extrabold text-[#1E1E1EB2];
+}
+
+.react-calendar__navigation button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .react-calendar__navigation__label {
+  font-size: 1.2rem;
+  font-weight: bold;
+} */
+
+/* Selected day style */
+.selected-day {
+  border: 2px solid #4caf50;
+  border-radius: 50%;
+  background-color: #e0f7e7;
+}
+
+/* Weekday labels */
+.react-calendar__month-view__weekdays__weekday abbr {
+  font-size: 12px;
+  font-weight: normal;
+  text-decoration: none;
+  @apply leading-[18.23px] text-[14px] font-bold text-[#1E1E1EB2];
+}
+
+/* Center calendar within parent */
+.react-calendar {
+  margin: 0 auto;
+}
+
+/* and this is where the react calendar ends .. */
+/* Add this to your CSS file */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+#More::before,
+#More::after,
+#More input {
+  content: "";
+  transform-origin: left center;
+  pointer-events: none;
+  @apply appearance-none transition-all outline-none h-0.5 w-[1.5rem] m-0 p-0 bg-black;
+}
+
+#More:has(input:checked)::before {
+  rotate: 45deg;
+  @apply w-[1.1rem];
+}
+
+#More:has(input:checked)::after {
+  rotate: -45deg;
+  @apply w-[1.1rem];
+}
+
+#More input:checked {
+  @apply opacity-0 w-0;
+}
+
+/* dropme {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+} */
+
+@media all and (max-width: 700px) {
+  #More+ul {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 1s ease-in-out, height 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #More:has(input:checked)+ul {
+    opacity: 1;
+
+    height: auto;
+    transition: opacity 1s ease-in-out, height 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+#ik {
+  color: #418d89;
+}
+
+@media all and (orientation: landscape) and (max-height: 400px) {
+  #mainimg {
+    height: 100%;
+    position: fixed;
+  }
+
+  #blueback {
+    height: 80%;
+    margin-top: 1.8rem;
+  }
+
+  #subdivparent {
+    height: 100%;
+  }
+
+  #subdiv {
+    display: flex;
+    flex-direction: row;
+
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #blue {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    overflow: scroll;
+    height: 90%;
+    background-color: transparent;
+  }
+
+  #childblue {
+    align-items: center;
+    height: 100%;
+  }
+
+  #childblue div,
+  #childblue p,
+  #childblue button {
+    width: 70%;
+  }
+
+  #blue::-webkit-scrollbar {
+    display: none;
+  }
+
+  #head {
+    display: flex;
+    flex-direction: row;
+    z-index: 1000;
+  }
+
+  #ul li a {
+    font-size: 0.8rem;
+  }
+
+  #ul {
+    list-style-type: none;
+  }
+
+  #himg {
+    width: 10%;
+    height: 40%;
+  }
+
+  #imgparent {
+    height: 100%;
+  }
+
+  #sfooter {
+    font-size: 0.5rem;
+  }
+
+  #pfooter {
+    font-size: 0.6rem;
+  }
+}
+
+/* @media (orientation: landscape) and (min-width: 812px) and (max-width: 812px) {
+  #subdiv {
+    background-color: black;
+  }
+} */
+.no-scroll {
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("./assets/fonts/NeueMontreal-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* this is the end of the font assigning  */
+
+.nav-font {
+  font-family: "Dm Sans", sans-serif;
+}
+
+/* WebKit Browsers */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

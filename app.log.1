@@ -1,0 +1,138 @@
+[2025-05-20 17:16:50,330] ERROR in app: Exception on /api/auth/register [POST]
+Traceback (most recent call last):
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3297, in raw_connection
+    return self.pool.connect()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 180, in _do_get
+    self._dec_overflow()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 902, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "db" to address: nodename nor servname provided, or not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/ndukwearmstrong/personal/cyberxBk/app/auth/routes.py", line 19, in register
+    db.session.add(user); db.session.commit()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 599, in commit
+    return self._proxied.commit()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4345, in flush
+    self._flush(objects)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4481, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4441, in _flush
+    flush_context.execute()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 60, in save_obj
+    for (
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 223, in _organize_states_for_save
+    for state, dict_, mapper, connection in _connections_for_states(
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/persistence.py", line 1753, in _connections_for_states
+    connection = uowtransaction.transaction.connection(base_mapper)
+  File "<string>", line 2, in connection
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1039, in connection
+    return self._connection_for_bind(bind, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1175, in _connection_for_bind
+    conn = self._parent._connection_for_bind(
+  File "<string>", line 2, in _connection_for_bind
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3273, in connect
+    return self._connection_cls(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2436, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3297, in raw_connection
+    return self.pool.connect()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 713, in checkout
+    rec = pool._do_get()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 180, in _do_get
+    self._dec_overflow()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 675, in __init__
+    self.__connect()
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 902, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/pool/base.py", line 897, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/create.py", line 646, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 625, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+  File "/Users/ndukwearmstrong/personal/cyberxBk/venv/lib/python3.9/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not translate host name "db" to address: nodename nor servname provided, or not known
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
